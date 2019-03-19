@@ -1,16 +1,21 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include <map>
-
-using namespace std;
 
 int main() {
 	size_t q;
-	cin >> q;
+	std::cin >> q;
 
-	for (int i = 0; i < q; ++i) {
-		string command;
-		cin >> command;
+	typedef std::map<std::string, std::vector<std::string>> mapStringVecOfString;
+
+	mapStringVecOfString bus_to_stops;
+	mapStringVecOfString stop_to_buses;
+
+
+	for (size_t i = 0; i < q; ++i) {
+		std::string command;
+		std::cin >> command;
 
 		if (command == "NEW_BUS") {
 

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="blocks_weight.cpp">
+    <ClCompile Include="find_max_repetition_count.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
