@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="find_max_repetition_count.cpp">
+    <ClCompile Include="sqr_all.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="team_tasks.cpp">
+    <ClCompile Include="element_reference.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
