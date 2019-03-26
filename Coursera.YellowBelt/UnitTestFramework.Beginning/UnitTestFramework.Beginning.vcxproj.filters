@@ -21,9 +21,6 @@
     <ClCompile Include="correct.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DTestFramework.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="starter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -36,5 +33,10 @@
     <ClCompile Include="test_rational.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\MultiFileCompilation\test_runner.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

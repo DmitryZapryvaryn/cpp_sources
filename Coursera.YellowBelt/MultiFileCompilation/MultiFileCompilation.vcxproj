@@ -18,21 +18,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="correct.cpp" />
-    <ClCompile Include="starter.cpp" />
-    <ClCompile Include="test_equation.cpp" />
-    <ClCompile Include="test_palindrome.cpp" />
-    <ClCompile Include="test_person.cpp" />
-    <ClCompile Include="test_rational.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\MultiFileCompilation\test_runner.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{9A16223A-BFD1-4280-81C9-3A74643712D8}</ProjectGuid>
-    <RootNamespace>UnitTestFrameworkBeginning</RootNamespace>
+    <ProjectGuid>{C01A6B2A-D688-4161-947D-907D8F05176F}</ProjectGuid>
+    <RootNamespace>MultiFileCompilation</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -99,9 +88,6 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -131,6 +117,20 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="PhoneNumber\phone_number.h" />
+    <ClInclude Include="PhoneNumber\phone_number_tests.h" />
+    <ClInclude Include="Rectangle\rectangle.h" />
+    <ClInclude Include="SumReverseSort\sum_reverse_sort.h" />
+    <ClInclude Include="SumReverseSort\sum_reverse_sort_tests.h" />
+    <ClInclude Include="test_runner.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PhoneNumber\phone_number.cpp" />
+    <ClCompile Include="Rectangle\rectangle.cpp" />
+    <ClCompile Include="SumReverseSort\sum_reverse_sort.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
