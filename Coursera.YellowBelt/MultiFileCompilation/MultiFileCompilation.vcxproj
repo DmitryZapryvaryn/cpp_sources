@@ -88,6 +88,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -118,6 +121,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BusesAndStops\bus_manager.h" />
+    <ClInclude Include="BusesAndStops\query.h" />
+    <ClInclude Include="BusesAndStops\responses.h" />
     <ClInclude Include="PhoneNumber\phone_number.h" />
     <ClInclude Include="PhoneNumber\phone_number_tests.h" />
     <ClInclude Include="Rectangle\rectangle.h" />
@@ -126,7 +132,10 @@
     <ClInclude Include="test_runner.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="BusesAndStops\bus_manager.cpp" />
+    <ClCompile Include="BusesAndStops\query.cpp" />
+    <ClCompile Include="BusesAndStops\responses.cpp" />
+    <ClCompile Include="BusesAndStops\main.cpp" />
     <ClCompile Include="PhoneNumber\phone_number.cpp" />
     <ClCompile Include="Rectangle\rectangle.cpp" />
     <ClCompile Include="SumReverseSort\sum_reverse_sort.cpp" />

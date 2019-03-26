@@ -51,11 +51,17 @@
     <ClInclude Include="Rectangle\rectangle.h">
       <Filter>Header Files\Rectangle</Filter>
     </ClInclude>
+    <ClInclude Include="BusesAndStops\query.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BusesAndStops\responses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BusesAndStops\bus_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PhoneNumber\phone_number.cpp">
       <Filter>Source Files\PhoneNumber</Filter>
     </ClCompile>
@@ -64,6 +70,18 @@
     </ClCompile>
     <ClCompile Include="Rectangle\rectangle.cpp">
       <Filter>Source Files\Rectangle</Filter>
+    </ClCompile>
+    <ClCompile Include="BusesAndStops\query.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BusesAndStops\responses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BusesAndStops\bus_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BusesAndStops\main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
