@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PrintVectorPart\print_vector_part.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -36,6 +33,24 @@
     <ClCompile Include="Demographics\print_stats.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MergeSort\merge_sort_div2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MergeSort\merge_sort_div3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FindNearestElement\find_nearest_element.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NameHistory\names4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupBy\find_start_with_char.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupBy\find_start_with_prefix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrintVectorPart\print_vector_part.h">
@@ -48,6 +63,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Demographics\print_stats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MergeSort\merge_sort_div2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MergeSort\merge_sort_div3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FindNearestElement\find_nearest_element.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

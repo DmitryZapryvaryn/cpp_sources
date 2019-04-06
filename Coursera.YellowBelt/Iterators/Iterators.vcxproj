@@ -88,6 +88,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -120,7 +123,12 @@
   <ItemGroup>
     <ClCompile Include="Demographics\print_stats.cpp" />
     <ClCompile Include="FindGreaterElements\find_greater_elements.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="FindNearestElement\find_nearest_element.cpp" />
+    <ClCompile Include="GroupBy\find_start_with_char.cpp" />
+    <ClCompile Include="GroupBy\find_start_with_prefix.cpp" />
+    <ClCompile Include="MergeSort\merge_sort_div2.cpp" />
+    <ClCompile Include="MergeSort\merge_sort_div3.cpp" />
+    <ClCompile Include="NameHistory\names4.cpp" />
     <ClCompile Include="Permutations\print_permutations.cpp" />
     <ClCompile Include="PrintVectorPart\print_vector_part.cpp" />
     <ClCompile Include="RemoveDuplicates\remove_duplicates.cpp" />
@@ -128,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Demographics\print_stats.h" />
+    <ClInclude Include="FindNearestElement\find_nearest_element.h" />
+    <ClInclude Include="MergeSort\merge_sort_div2.h" />
+    <ClInclude Include="MergeSort\merge_sort_div3.h" />
     <ClInclude Include="Permutations\print_permutations.h" />
     <ClInclude Include="PrintVectorPart\print_vector_part.h" />
     <ClInclude Include="SplitIntoWords\split_into_words.h" />

@@ -1,16 +1,18 @@
-#include "Demographics/print_stats.h"
+#include "FindNearestElement/find_nearest_element.h"
+#include <iostream>
 
 int main() {
-	vector<Person> persons = {
-	  {31, Gender::MALE, false},
-	  {40, Gender::FEMALE, true},
-	  {24, Gender::MALE, true},
-	  {20, Gender::FEMALE, true},
-	  {80, Gender::FEMALE, false},
-	  {78, Gender::MALE, false},
-	  {10, Gender::FEMALE, false},
-	  {55, Gender::MALE, true},
-	};
-	PrintStats(persons);
+	set<int> numbers = { 1, 4, 6 };
+	cout <<
+		*FindNearestElement(numbers, 0) << " " <<
+		*FindNearestElement(numbers, 3) << " " <<
+		*FindNearestElement(numbers, 5) << " " <<
+		*FindNearestElement(numbers, 6) << " " <<
+		*FindNearestElement(numbers, 100) << endl;
+
+	set<int> empty_set;
+
+	cout << (FindNearestElement(empty_set, 8) == end(empty_set)) << endl;
+
 	return 0;
 }
