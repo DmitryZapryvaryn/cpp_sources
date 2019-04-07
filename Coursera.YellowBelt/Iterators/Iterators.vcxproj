@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BuildExpression\build_expression.cpp" />
     <ClCompile Include="Demographics\print_stats.cpp" />
     <ClCompile Include="FindGreaterElements\find_greater_elements.cpp" />
     <ClCompile Include="FindNearestElement\find_nearest_element.cpp" />
