@@ -1,11 +1,9 @@
 #include <iostream>
 #include <string>
 #include <deque>
+#include <algorithm>
 
 using namespace std;
-
-// TODO: opertor enum + - * /
-// TODO: 
 
 int main() {
 	int x, N;
@@ -15,16 +13,21 @@ int main() {
 
 	cin >> x >> N;
 	expression.push_back(to_string(x));
+	char prev_oper = '*';
 	for (int i = 0; i < N; ++i) {
 		cin >> operation >> x;
-		if (operation == '+' || operation == '-' || operation == '*' || operation == '/') {
+		
+		bool braces = (operation == '/' || operation == '*') && (prev_oper == '-' || prev_oper == '+');
+		if (braces) {
 			expression.push_front("(");
 			expression.push_back(")");
-			expression.push_back(" ");
-			expression.push_back(string(1, operation));
-			expression.push_back(" ");
-			expression.push_back(to_string(x));
 		}
+		expression.push_back(" ");
+		expression.push_back(string(1, operation));
+		expression.push_back(" ");
+		expression.push_back(to_string(x));
+
+		prev_oper = operation;
 	}
 
 	for (auto item : expression) {

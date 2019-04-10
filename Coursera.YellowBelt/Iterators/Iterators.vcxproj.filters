@@ -51,7 +51,7 @@
     <ClCompile Include="GroupBy\find_start_with_prefix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BuildExpression\build_expression.cpp">
+    <ClCompile Include="BuildExpression\build_expression_without_redundant_braces.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
