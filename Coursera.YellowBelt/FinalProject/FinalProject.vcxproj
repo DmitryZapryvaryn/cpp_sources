@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{0BCF2077-CB6C-4CED-B62E-E799AE72440B}</ProjectGuid>
-    <RootNamespace>OOP</RootNamespace>
+    <ProjectGuid>{5C434BAB-44DB-410C-B542-CBA56AB1B3B0}</ProjectGuid>
+    <RootNamespace>FinalProject</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -89,9 +89,6 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -122,11 +119,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ExpressionParser\parser.cpp" />
-    <ClCompile Include="Figures\figures.cpp" />
-    <ClCompile Include="Inheritance\inheritance.cpp" />
-    <ClCompile Include="Notifiers\notifiers.cpp" />
-    <ClCompile Include="Professions\person.cpp" />
+    <ClCompile Include="condition_parser.cpp" />
+    <ClCompile Include="condition_parser_test.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="token.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="condition_parser.h" />
+    <ClInclude Include="test_runner.h" />
+    <ClInclude Include="token.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,20 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Inheritance\inheritance.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExpressionParser\parser.cpp">
+    <ClCompile Include="condition_parser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Notifiers\notifiers.cpp">
+    <ClCompile Include="condition_parser_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Figures\figures.cpp">
+    <ClCompile Include="token.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Professions\person.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="condition_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="token.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test_runner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
