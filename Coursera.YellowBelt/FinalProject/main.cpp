@@ -9,6 +9,25 @@
 
 using namespace std;
 
+Date ParseDate(istream& is) {
+	int y, m, d;
+	char delimeter1, delimeter2;
+	char any;
+	Date date;
+	is >> y >> delimeter1 >> m >> delimeter2 >> d;
+
+	if (is && delimeter1 == '-' && delimeter2 == '-' && is.eof()) {
+		Month month = Month(m);
+		Day day = Day(d);
+		date = Date(Year(y), month, day);
+	}
+	else {
+		throw domain_error("Wrong date format: " + str_date);
+	}
+
+	return date;
+}
+
 string ParseEvent(istream& is) {
   // Реализуйте эту функцию
 }
