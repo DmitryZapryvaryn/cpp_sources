@@ -8,14 +8,23 @@ class Person {
 public:
 	Person(const string& new_name, const string& new_type) : name(new_name), type(new_type) {}
 
-	string Log() const {
+	string GetName() const {
+		return name;
+	}
+
+	string GetType() const {
+		return type;
+	}
+
+	string GetInfo() const {
 		return type + ": " + name;
 	}
 
 	virtual void Walk(const string& destination) const {
-		cout << Log() << " walks to: " << destination << endl;
+		cout << GetInfo() << " walks to: " << destination << endl;
 	}
 
+protected:
 	const string type;
 	const string name;
 };
@@ -28,16 +37,16 @@ public:
 	}
 
 	void Learn() const {
-		cout << Log() << " learns" << endl;
+		cout << GetInfo() << " learns" << endl;
 	}
 
 	void Walk(const string& destination) const {
-		cout << Log() << " walks to: " << destination << endl;
-		cout << Log() << " sings a song: " << favouriteSong << endl;
+		cout << GetInfo() << " walks to: " << destination << endl;
+		SingSong();
 	}
 
 	void SingSong() const {
-		cout << Log() << " sings a song: " << favouriteSong << endl;
+		cout << GetInfo() << " sings a song: " << favouriteSong << endl;
 	}
 
 private:
@@ -51,7 +60,7 @@ public:
 	Teacher(const string& name, const string& subject_) : Person(name, "Teacher"), subject(subject_) {}
 
 	void Teach() const {
-		cout << Log() << " teaches: " << subject << endl;
+		cout << GetInfo() << " teaches: " << subject << endl;
 	}
 
 private:
@@ -64,7 +73,7 @@ public:
 	Policeman(const string& name) : Person(name, "Policeman") {}
 
 	void Check(const Person& p) const {
-		cout << "Policeman: " << name << " checks " << type << ". " << type << "'s name is: " << p.name << endl;
+		cout << "Policeman: " << name << " checks " << p.GetType() << ". " << p.GetType() << "'s name is: " << p.GetName() << endl;
 	}
 };
 
