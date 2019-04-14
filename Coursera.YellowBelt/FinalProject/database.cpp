@@ -4,7 +4,7 @@
 
 using std::cout, std::endl;
 
-void Database::AddEvent(const Date & date, const string & event)
+void Database::Add(const Date & date, const string & event)
 {
 	events[date].insert(event);
 }
@@ -47,11 +47,11 @@ string Database::Last(const Date & date) const
 	return result;
 }
 
-void Database::Print() const
+void Database::Print(ostream& out) const
 {
 	for (const auto& item : events) {
 		for (const auto& elem : item.second) {
-			cout << item.first << " " << elem << endl;
+			out << item.first << " " << elem << endl;
 		}
 	}
 }
