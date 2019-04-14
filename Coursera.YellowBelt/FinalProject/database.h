@@ -5,21 +5,22 @@
 #include <string>
 #include <set>
 #include <map>
+#include <ostream>
 
-using std::map, std::set, std::string;
+using namespace std;
 
 
 class Database {
 public:
-	void AddEvent(const Date& date, const string& event);
-	bool DeleteEvent(const Date& date, const string& event);
-	int DeleteDate(const Date& date);
+	void Add(const Date& date, const string& event);
+	
+	int RemoveIf(const Date& date);
 
-	set<string> Find(const Date& date) const;
+	set<string> FindIf(const Date& date) const;
 
 	string Last(const Date& date) const;
 
-	void Print() const;
+	void Print(ostream& out) const;
 
 private:
 	map<Date, set<string>> events;
