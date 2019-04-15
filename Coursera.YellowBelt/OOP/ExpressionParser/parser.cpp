@@ -20,7 +20,7 @@ private:
 };
 
 struct Variable : public Node {
-	Variable(const int &x) : _x(x) {}
+	Variable(const int& x) : _x(x) {}
 
 	int Evaluate() const override { return _x; }
 

@@ -14,9 +14,11 @@ class Database {
 public:
 	void Add(const Date& date, const string& event);
 	
-	int RemoveIf(const Date& date);
+	template<typename Predicate>
+	int RemoveIf(Predicate predicate);
 
-	set<string> FindIf(const Date& date) const;
+	template<typename Predicate>
+	set<string> FindIf(Predicate date) const;
 
 	string Last(const Date& date) const;
 
