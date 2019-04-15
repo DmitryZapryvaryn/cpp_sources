@@ -5,8 +5,6 @@ bool EmptyNode::Evaluate(const Date & date, const string & event) const
 	return true;
 }
 
-DateComparisonNode::DateComparisonNode(Comparison cmp, const Date & date) : comparison(cmp), date_(date) {}
-
 bool DateComparisonNode::Evaluate(const Date & date, const string & event) const
 {
 	switch (comparison)
@@ -35,9 +33,23 @@ bool DateComparisonNode::Evaluate(const Date & date, const string & event) const
 	}
 }
 
-EventComparisonNode::EventComparisonNode(Comparison cmp, const string& event) : comparison(cmp), event_(event) {}
-
 bool EventComparisonNode::Evaluate(const Date & date, const string & event) const
+{
+	switch (comparison)
+	{
+	case Comparison::Equal:
+		return event_ == event;
+		break;
+	case Comparison::NotEqual:
+		return event_ != event;
+		break;
+	default:
+		return false;
+		break;
+	}
+}
+
+bool LogicalOperationNode::Evaluate(const Date & date, const string & event) const
 {
 	return false;
 }

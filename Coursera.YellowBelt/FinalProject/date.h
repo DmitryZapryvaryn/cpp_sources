@@ -37,7 +37,15 @@ private:
 	int year;
 };
 
-bool operator<(const Date& lhs, const Date& rhs);
+bool operator!= (const Date& lhs, const Date& rhs);
+bool operator== (const Date& lhs, const Date& rhs);
+
+bool operator< (const Date& lhs, const Date& rhs);
+bool operator> (const Date& lhs, const Date& rhs);
+
+bool operator<= (const Date& lhs, const Date& rhs);
+bool operator>= (const Date& lhs, const Date& rhs);
+
 
 ostream& operator <<(ostream& output, const Date& date);
 
