@@ -1,5 +1,34 @@
 #include "node.h"
 
+template<typename T>
+bool CompareTo(const T& lhs, const T& rhs, const Comparison cmp)
+{
+	switch (cmp)
+	{
+	case Comparison::Less:
+		return lhs < rhs;
+		break;
+	case Comparison::LessOrEqual:
+		return lhs <= rhs;
+		break;
+	case Comparison::Greater:
+		return lhs > rhs;
+		break;
+	case Comparison::GreaterOrEqual:
+		return lhs >= rhs;
+		break;
+	case Comparison::Equal:
+		return lhs == rhs;
+		break;
+	case Comparison::NotEqual:
+		return lhs != rhs;
+		break;
+	default:
+		return false;
+		break;
+	}
+}
+
 bool EmptyNode::Evaluate(const Date & date, const string & event) const
 {
 	return true;
@@ -7,58 +36,12 @@ bool EmptyNode::Evaluate(const Date & date, const string & event) const
 
 bool DateComparisonNode::Evaluate(const Date & date, const string & event) const
 {
-	switch (comparison)
-	{
-	case Comparison::Less:
-		return date < date_;
-		break;
-	case Comparison::LessOrEqual:
-		return date <= date_;
-		break;
-	case Comparison::Greater:
-		return date > date_;
-		break;
-	case Comparison::GreaterOrEqual:
-		return date >= date_;
-		break;
-	case Comparison::Equal:
-		return date == date_;
-		break;
-	case Comparison::NotEqual:
-		return date != date_;
-		break;
-	default:
-		return false;
-		break;
-	}
+	return CompareTo(date, date_, comparison);
 }
 
 bool EventComparisonNode::Evaluate(const Date & date, const string & event) const
 {
-	switch (comparison)
-	{
-	case Comparison::Less:
-		return event < event_;
-		break;
-	case Comparison::LessOrEqual:
-		return event <= event_;
-		break;
-	case Comparison::Greater:
-		return event > event_;
-		break;
-	case Comparison::GreaterOrEqual:
-		return event >= event_;
-		break;
-	case Comparison::Equal:
-		return event_ == event;
-		break;
-	case Comparison::NotEqual:
-		return event_ != event;
-		break;
-	default:
-		return false;
-		break;
-	}
+	return CompareTo(event, event_, comparison);
 }
 
 bool LogicalOperationNode::Evaluate(const Date & date, const string & event) const

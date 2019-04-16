@@ -2,6 +2,8 @@
 
 #include "date.h"
 
+#include <memory>
+
 enum class Comparison {
 	Less,
 	LessOrEqual,
