@@ -88,9 +88,7 @@ void AssertEqual(const T& t, const U& u, const string& hint) {
 	}
 }
 
-void Assert(bool b, const string& hint) {
-	AssertEqual(b, true, hint);
-}
+void Assert(bool b, const string& hint);
 
 template <class TestFunc>
 void TestRunner::RunTest(TestFunc func, const string& test_name) {
@@ -105,12 +103,5 @@ void TestRunner::RunTest(TestFunc func, const string& test_name) {
 	catch (...) {
 		++fail_count;
 		cerr << "Unknown exception caught" << endl;
-	}
-}
-
-TestRunner::~TestRunner() {
-	if (fail_count > 0) {
-		cerr << fail_count << " unit tests failed. Terminate" << endl;
-		exit(1);
 	}
 }

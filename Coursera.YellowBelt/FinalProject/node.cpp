@@ -37,6 +37,18 @@ bool EventComparisonNode::Evaluate(const Date & date, const string & event) cons
 {
 	switch (comparison)
 	{
+	case Comparison::Less:
+		return event < event_;
+		break;
+	case Comparison::LessOrEqual:
+		return event <= event_;
+		break;
+	case Comparison::Greater:
+		return event > event_;
+		break;
+	case Comparison::GreaterOrEqual:
+		return event >= event_;
+		break;
 	case Comparison::Equal:
 		return event_ == event;
 		break;
@@ -51,5 +63,16 @@ bool EventComparisonNode::Evaluate(const Date & date, const string & event) cons
 
 bool LogicalOperationNode::Evaluate(const Date & date, const string & event) const
 {
-	return false;
+	switch (logicalOperation)
+	{
+	case LogicalOperation::And:
+		return left_->Evaluate(date, event) && right_->Evaluate(date, event);
+		break;
+	case LogicalOperation::Or:
+		return left_->Evaluate(date, event) || right_->Evaluate(date, event);
+		break;
+	default:
+		return false;
+		break;
+	}
 }

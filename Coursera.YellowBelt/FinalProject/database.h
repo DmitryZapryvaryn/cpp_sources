@@ -6,6 +6,7 @@
 #include <set>
 #include <map>
 #include <ostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -14,11 +15,11 @@ class Database {
 public:
 	void Add(const Date& date, const string& event);
 	
-	template<typename Predicate>
-	int RemoveIf(Predicate predicate);
+	template<typename PredicateFunc>
+	int RemoveIf(PredicateFunc predicate);
 
-	template<typename Predicate>
-	set<string> FindIf(Predicate date) const;
+	template<typename PredicateFunc>
+	set<string> FindIf(PredicateFunc date) const;
 
 	string Last(const Date& date) const;
 
@@ -27,3 +28,15 @@ public:
 private:
 	map<Date, set<string>> events;
 };
+
+template<typename PredicateFunc>
+int Database::RemoveIf(PredicateFunc predicate)
+{
+	return 0;
+}
+
+template<typename PredicateFunc>
+set<string> Database::FindIf(PredicateFunc predicate) const
+{
+	return set<string>();
+}

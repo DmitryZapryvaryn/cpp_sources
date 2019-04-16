@@ -2,30 +2,6 @@
 
 #include <string>
 #include <iomanip>
-#include <stdexcept>
-
-Year::Year(int new_value)
-{
-	value = new_value;
-}
-
-Month::Month(int new_value)
-{
-	if (new_value > 12 || new_value < 1) {
-		string error_message = "Month value is invalid: " + to_string(new_value);
-		throw range_error(error_message);
-	}
-	value = new_value;
-}
-
-Day::Day(int new_value)
-{
-	if (new_value > 31 || new_value < 1) {
-		string error_message = "Day value is invalid: " + to_string(new_value);
-		throw range_error(error_message);
-	}
-	value = new_value;
-}
 
 Date::Date()
 {
@@ -34,11 +10,11 @@ Date::Date()
 	year = 0;
 }
 
-Date::Date(Year new_year, Month new_month, Day new_day)
+Date::Date(int new_year, int new_month, int new_day)
 {
-	day = new_day.value;
-	month = new_month.value;
-	year = new_year.value;
+	day = new_day;
+	month = new_month;
+	year = new_year;
 }
 
 int Date::GetYear() const
@@ -109,9 +85,5 @@ Date ParseDate(istream & is)
 	int y, m, d;
 	is >> y; is.ignore(1); is >> m; is.ignore(1); is >> d;
 
-	Month month = Month(m);
-	Day day = Day(d);
-	Year year = Year(y);
-
-	return Date(year, month, day);
+	return Date(y, m, d);
 }

@@ -4,28 +4,10 @@
 
 using namespace std;
 
-struct Year {
-	int value;
-
-	explicit Year(int new_value);
-};
-
-struct Month {
-	int value;
-
-	explicit Month(int new_value);
-};
-
-struct Day {
-	explicit Day(int new_value);
-
-	int value;
-};
-
 class Date {
 public:
 	Date();
-	Date(Year new_year, Month new_month, Day new_day);
+	Date(int new_year, int new_month, int new_day);
 
 	int GetYear() const;
 	int GetMonth() const;
