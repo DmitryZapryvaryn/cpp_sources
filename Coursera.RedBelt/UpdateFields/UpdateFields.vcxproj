@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{8037FE92-8E94-40D3-9592-084EB24AF816}</ProjectGuid>
-    <RootNamespace>MacrosesAndClassTemplates</RootNamespace>
+    <ProjectGuid>{8F05F796-8BD4-4FE8-B5CD-5707EE7D2ACB}</ProjectGuid>
+    <RootNamespace>UpdateFields</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,30 +70,21 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-    </Link>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <UseFullPaths>false</UseFullPaths>
-      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -124,20 +115,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BadMacros\print_values.cpp" />
-    <ClCompile Include="ComparatorGenerator\sort_by.cpp" />
-    <ClCompile Include="Logger\log.cpp" />
-    <ClCompile Include="UpdateField\update_field.cpp" />
-    <ClCompile Include="YelowBeltTestTask\max_element_if.cpp" />
+    <ClInclude Include="airline_ticket.h" />
+    <ClInclude Include="test_runner.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BadMacros\test_runner.h" />
-    <ClInclude Include="ComparatorGenerator\airline_ticket.h" />
-    <ClInclude Include="ComparatorGenerator\test_runner.h" />
-    <ClInclude Include="Logger\test_runner.h" />
-    <ClInclude Include="UpdateField\airline_ticket.h" />
-    <ClInclude Include="UpdateField\test_runner.h" />
-    <ClInclude Include="YelowBeltTestTask\test_runner.h" />
+    <ClCompile Include="update_field.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
