@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{6EC71A02-518D-4D60-AFCF-486265BD23C0}</ProjectGuid>
-    <RootNamespace>ComparatorGenerator</RootNamespace>
+    <ProjectGuid>{0BF00F9E-5B40-452D-BBEA-B4DB7085292F}</ProjectGuid>
+    <RootNamespace>Ppaginator</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,11 +115,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="airline_ticket.h" />
-    <ClInclude Include="test_runner.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="sort_by.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -115,6 +115,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="log.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="test_runner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

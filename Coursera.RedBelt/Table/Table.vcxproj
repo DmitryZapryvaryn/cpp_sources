@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{6EC71A02-518D-4D60-AFCF-486265BD23C0}</ProjectGuid>
-    <RootNamespace>ComparatorGenerator</RootNamespace>
+    <ProjectGuid>{3E85400D-B7A5-47B3-8A06-83E30E6F9C32}</ProjectGuid>
+    <RootNamespace>Table</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -77,6 +77,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -115,11 +118,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="airline_ticket.h" />
-    <ClInclude Include="test_runner.h" />
+    <ClCompile Include="table.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sort_by.cpp" />
+    <ClInclude Include="test_runner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
