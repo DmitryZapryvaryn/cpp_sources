@@ -90,7 +90,7 @@ void TestUpdate() {
   ASSERT_EQUAL(t.arrival_time, (Time{20, 33}));
 }
 
-//int main() {
-//  TestRunner tr;
-//  RUN_TEST(tr, TestUpdate);
-//}
+int main() {
+  TestRunner tr;
+  RUN_TEST(tr, TestUpdate);
+}

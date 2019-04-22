@@ -6,23 +6,63 @@
 #include <string>
 using namespace std;
 
-// Реализуйте шаблон класса Paginator
+template<typename Iterator>
+class IteratorRange {
+public:
+	IteratorRange(Iterator begin, Iterator end) : first(begin), last(end), size_(distance(first, last)) {}
+
+	Iterator begin() const {
+		return first;
+	}
+
+	Iterator end() const {
+		return last;
+	}
+
+	size_t size() const {
+		return size_;
+	}
+
+private:
+	Iterator first, last;
+	size_t size_;
+};
 
 template <typename Iterator>
 class Paginator {
 public:
-	Paginator(Iterator begin, Iterator end, size_t page_size) : begin_(begin), end_(end), page_size_(page_size) {}
-	size_t size() const {
-		return (end - begin) / page_size_;
+	Paginator(Iterator begin, Iterator end, size_t page_size) {
+		size_t page_count = (end - begin) / page_size;
+		for (size_t i = 0; i < page_count; ++i) {
+			auto next_iter = next(begin, page_size);
+			pages.push_back({ begin, next_iter });
+			begin = next_iter;
+		}
+
+		if (begin != end) {
+			pages.push_back({ begin, end });
+		}
 	}
+
+	size_t size() const {
+		return pages.size();
+	}
+
+	auto begin() const {
+		return pages.begin();
+	}
+
+	auto end() const {
+		return pages.end();
+	}
+
 private:
-	Iterator begin_, end_;
-	size_t page_size_;
+	vector<IteratorRange<Iterator>> pages;
 };
 
 template <typename C>
-void Paginate(C& c, size_t page_size) {
-  // Реализуйте этот шаблон функции
+auto Paginate(C& c, size_t page_size) {
+	return Paginator(c.begin(), c.end(), page_size);
 }
 
 void TestPageCounts() {

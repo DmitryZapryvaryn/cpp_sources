@@ -108,7 +108,7 @@ void TestNoMax() {
   );
 }
 
-void RunAll() {
+int main() {
   TestRunner tr;
   tr.RunTest(TestUniqueMax, "TestUniqueMax");
   tr.RunTest(TestSeveralMax, "TestSeveralMax");
