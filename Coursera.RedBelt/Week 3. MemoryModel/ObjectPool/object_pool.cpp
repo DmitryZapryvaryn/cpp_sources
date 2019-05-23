@@ -1,4 +1,4 @@
-#include "test_runner.h"
+#include "../../test_runner.h"
 
 #include <algorithm>
 #include <iostream>
@@ -21,7 +21,7 @@ public:
 		}
 
 		T* newObject = new T;
-		allocatedObjects.insert(new T);
+		allocatedObjects.insert(newObject);
 		return newObject;
 	}
 
