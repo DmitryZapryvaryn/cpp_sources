@@ -111,13 +111,18 @@ Stats ExploreLine(const set<string>& key_words, const string& line) {
 	return result;
 }
 
-template<typename Container>
-Stats ExploreKeyWordsMultiThread(
-	const Container& key_words, istream& input
-) {
+Stats ExploreKeyWordsMultiThread(const set<string>& key_words, istream& input)
+{
 	Stats result;
 	for (string line; getline(input, line); ) {
-		result += ExploreLineMulti(key_words, line);
+		const int CORE_NUMBER = 4;
+		vector<future<Stats>> futures;
+		for (const auto& page : Paginate(key_words, key_words.size() / CORE_NUMBER)) {
+			futures.push_back(async([page, line] { return ExploreLineMulti(page, line); }));
+		}
+		for (auto& f : futures) {
+			result += f.get();
+		}
 	}
 	return result;
 }
@@ -133,18 +138,13 @@ Stats ExploreKeyWordsSingleThread(
 }
 
 Stats ExploreKeyWords(const set<string>& key_words, istream& input) {
-	LOG_DURATION("Multi Thread");
-	const int CORE_NUMBER = 4;
-	vector<future<Stats>> futures(4);
-	for (const auto& page : Paginate(key_words, key_words.size() / CORE_NUMBER)) {
-		futures.push_back(async([page, &input] { return ExploreKeyWordsMultiThread(page, input); }));
-	}
-	Stats result;
-	for (auto& f : futures) {
-		result += f.get();
-	}
+	
+	/*{
+		LOG_DURATION("Multi thread");
+		result = ExploreKeyWordsMultiThread(key_words, input);
+	}*/
 
-	return result;
+	return ExploreKeyWordsMultiThread(key_words, input);//ExploreKeyWordsSingleThread(key_words, input);
 }
 
 void TestBasic() {
