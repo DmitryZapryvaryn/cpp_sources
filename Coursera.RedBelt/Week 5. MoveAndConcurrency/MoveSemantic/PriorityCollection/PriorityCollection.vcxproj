@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{DBA5679C-19E1-44A1-A12D-38D4A32E814D}</ProjectGuid>
-    <RootNamespace>SimpleVector</RootNamespace>
+    <ProjectGuid>{599FA474-AB90-408B-9076-3B46573E491D}</ProjectGuid>
+    <RootNamespace>PriorityCollection</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -76,7 +76,6 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,10 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="simple_vector_2.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="simple_vector_2.h" />
+    <ClCompile Include="priority_collection_2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
