@@ -85,6 +85,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExploreKeyWords", "Week 5. 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MatrixSum", "Week 5. MoveAndConcurrency\Concurrency\MatrixSum\MatrixSum.vcxproj", "{0F120543-280B-461C-910A-E57F005E37B5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestConcurrency", "TestConcurrency\TestConcurrency.vcxproj", "{1AE62DF3-B1C6-4BC2-B0EB-A529F464AFDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -349,6 +351,14 @@ Global
 		{0F120543-280B-461C-910A-E57F005E37B5}.Release|x64.Build.0 = Release|x64
 		{0F120543-280B-461C-910A-E57F005E37B5}.Release|x86.ActiveCfg = Release|Win32
 		{0F120543-280B-461C-910A-E57F005E37B5}.Release|x86.Build.0 = Release|Win32
+		{1AE62DF3-B1C6-4BC2-B0EB-A529F464AFDC}.Debug|x64.ActiveCfg = Debug|x64
+		{1AE62DF3-B1C6-4BC2-B0EB-A529F464AFDC}.Debug|x64.Build.0 = Debug|x64
+		{1AE62DF3-B1C6-4BC2-B0EB-A529F464AFDC}.Debug|x86.ActiveCfg = Debug|Win32
+		{1AE62DF3-B1C6-4BC2-B0EB-A529F464AFDC}.Debug|x86.Build.0 = Debug|Win32
+		{1AE62DF3-B1C6-4BC2-B0EB-A529F464AFDC}.Release|x64.ActiveCfg = Release|x64
+		{1AE62DF3-B1C6-4BC2-B0EB-A529F464AFDC}.Release|x64.Build.0 = Release|x64
+		{1AE62DF3-B1C6-4BC2-B0EB-A529F464AFDC}.Release|x86.ActiveCfg = Release|Win32
+		{1AE62DF3-B1C6-4BC2-B0EB-A529F464AFDC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -389,6 +399,7 @@ Global
 		{599FA474-AB90-408B-9076-3B46573E491D} = {408A64CC-15F8-4A8A-B543-90B01E8D6107}
 		{D67D936B-49A0-496E-8FD4-3BC55F198CD3} = {E49BDA4C-6B6F-4369-B434-2EA7E936A4DE}
 		{0F120543-280B-461C-910A-E57F005E37B5} = {E49BDA4C-6B6F-4369-B434-2EA7E936A4DE}
+		{1AE62DF3-B1C6-4BC2-B0EB-A529F464AFDC} = {E49BDA4C-6B6F-4369-B434-2EA7E936A4DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {29D76C6E-5BFF-4C07-A7E0-03DA8D9AA389}

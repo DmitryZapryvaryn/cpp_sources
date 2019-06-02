@@ -29,7 +29,7 @@ template <typename Iterator>
 class Paginator {
 public:
 	Paginator(Iterator begin, Iterator end, size_t page_size) {
-		/*size_t page_count = (end - begin) / page_size;
+		size_t page_count = (end - begin) / page_size;
 		for (size_t i = 0; i < page_count; ++i) {
 			auto next_iter = next(begin, page_size);
 			pages.push_back({ begin, next_iter });
@@ -38,14 +38,6 @@ public:
 
 		if (begin != end) {
 			pages.push_back({ begin, end });
-		}*/
-		for (size_t left = distance(begin, end); left > 0; ) {
-			size_t current_page_size = min(page_size, left);
-			Iterator current_page_end = next(begin, current_page_size);
-			pages.push_back({ begin, current_page_end });
-
-			left -= current_page_size;
-			begin = current_page_end;
 		}
 	}
 
@@ -72,6 +64,7 @@ auto Paginate(C& c, size_t page_size) {
 
 template<typename Container>
 int64_t CalculatePartSum(const Container& matrix_part) {
+	
 	int64_t sum = 0;
 	for (const auto& row : matrix_part) {
 		for (auto i : row) {
@@ -83,11 +76,11 @@ int64_t CalculatePartSum(const Container& matrix_part) {
 }
 
 int64_t CalculateMatrixSum(const vector<vector<int>>& matrix) {
-
 	vector<future<int64_t>> futures;
 	//size_t page_size = matrix.size() / 4;
-	for (auto& page : Paginate(matrix, 2250)) {
-		futures.push_back(async([=] {return CalculatePartSum(page); }));
+	for (auto& page : Paginate(matrix, 1)) {
+		futures.push_back(async([=] {
+			return CalculatePartSum(page); }));
 	}
 
 	int64_t sum = 0;
