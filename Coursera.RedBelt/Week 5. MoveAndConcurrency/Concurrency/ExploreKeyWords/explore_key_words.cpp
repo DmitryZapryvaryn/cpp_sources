@@ -1,11 +1,12 @@
-#include "../../../profiler.h" // "profile.h"
+#include "../../../profiler.h"
 #include "../../../test_runner.h"
 
 #include <map>
 #include <string>
 #include <sstream>
 #include <algorithm>
-#include <array>
+#include <utility>
+#include <iterator>
 #include <future>
 using namespace std;
 
@@ -19,52 +20,51 @@ struct Stats {
   }
 };
 
-int CountOccurancies(const string& word, const string& line) {
+vector<string> Split(const string& line) {
 	istringstream iss(line);
-	int count = 0;
-	while (!iss.eof()) {
-		string tmp; iss >> tmp;
-		if (tmp == word) {
-			++count;
-		}
-	}
 
-	return count;
+	return { istream_iterator<string>(iss),  istream_iterator<string>() };
 }
 
 Stats ExploreLine(const set<string>& key_words, const string& line) {
 	Stats result;
-	for (const auto& key_word : key_words) {
-		result.word_frequences[key_word] += CountOccurancies(key_word, line);
-		if (result.word_frequences[key_word] == 0) { result.word_frequences.erase(key_word); }
+	for (auto& word : Split(line)) {
+		if (key_words.count(word) > 0) {
+			++result.word_frequences[word];
+		}
 	}
 
 	return result;
 }
 
 Stats ExploreKeyWordsSingleThread(
-  const set<string>& key_words, istream& input
+  const set<string>& key_words, const vector<string>& input
 ) {
   Stats result;
-  for (string line; getline(input, line); ) {
+  for (const string& line : input) {
     result += ExploreLine(key_words, line);
   }
   return result;
 }
 
 Stats ExploreKeyWords(const set<string>& key_words, istream& input) {
-	
 	vector<future<Stats>> futures;
-	vector<istringstream> streams;
+	const size_t text_number_of_lines = 10000;
+	vector<vector<string>> input_text;
 	while (!input.eof()) {
-		char str_buf[100] = {};
-		input.getline(str_buf, 100);
-		streams.push_back(istringstream(str_buf));
+		vector<string> text;
+		text.reserve(text_number_of_lines);
+		for (int i = 0; i < text_number_of_lines; ++i) {
+			string str_buf;
+			getline(input, str_buf);
+			text.emplace_back(move(str_buf));
+		}
+		input_text.emplace_back(move(text));
 	}
 
-	for (auto& stream : streams) {
+	for (auto& text : input_text) {
 		futures.push_back(
-			async(ExploreKeyWordsSingleThread, ref(key_words), ref(stream)));
+			async(ExploreKeyWordsSingleThread, cref(key_words), cref(text)));
 	}
 
 	Stats result;
@@ -76,7 +76,6 @@ Stats ExploreKeyWords(const set<string>& key_words, istream& input) {
 }
 
 void TestBasic() {
-	LOG_DURATION("Thread");
   const set<string> key_words = {"yangle", "rocks", "sucks", "all"};
 
   stringstream ss;
@@ -84,86 +83,6 @@ void TestBasic() {
   ss << "It sucks when yangle isn't available\n";
   ss << "10 reasons why yangle is the best IT company\n";
   ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "this new yangle service really rocks\n";
-  ss << "It sucks when yangle isn't available\n";
-  ss << "10 reasons why yangle is the best IT company\n";
-  ss << "yangle rocks others suck\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
-  ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
   ss << "Goondex really sucks, but yangle rocks. Use yangle\n";
 
   const Stats stats = ExploreKeyWords(key_words, ss);
@@ -177,8 +96,6 @@ void TestBasic() {
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-  TestRunner tr;
-  while(true){
-	  RUN_TEST(tr, TestBasic); }
+	TestRunner tr;
+	RUN_TEST(tr, TestBasic);
 }
