@@ -13,6 +13,17 @@
 #include <thread>
 using namespace std;
 
+void TestSplitIntoWords() {
+	const vector<string> docs = {
+		"     a       c   b     ",
+		"a     c         b "
+	};
+	istringstream docs_input(Join('\n', docs));
+
+	SearchServer srv;
+	srv.UpdateDocumentBase(docs_input);
+}
+
 void TestFunctionality(
   const vector<string>& docs,
   const vector<string>& queries,
@@ -201,12 +212,13 @@ void TestBasicSearch() {
 }
 
 int main() {
-  TestRunner tr;
-  while (true) {
-	  RUN_TEST(tr, TestSerpFormat);
-	  RUN_TEST(tr, TestTop5);
-	  RUN_TEST(tr, TestHitcount);
-	  RUN_TEST(tr, TestRanking);
-	  RUN_TEST(tr, TestBasicSearch);
-  }
+	TestRunner tr;
+	
+		//RUN_TEST(tr, TestSplitIntoWords);
+		//RUN_TEST(tr, TestSerpFormat);
+		RUN_TEST(tr, TestTop5);
+		RUN_TEST(tr, TestHitcount);
+		RUN_TEST(tr, TestRanking);
+		RUN_TEST(tr, TestBasicSearch);
+	
 }

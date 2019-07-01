@@ -41,5 +41,8 @@
     <ClInclude Include="test_runner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="synchronized.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
