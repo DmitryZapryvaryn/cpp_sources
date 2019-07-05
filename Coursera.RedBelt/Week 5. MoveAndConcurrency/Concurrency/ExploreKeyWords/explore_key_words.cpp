@@ -20,7 +20,7 @@ struct Stats {
 };
 
 int CountOccurancies(const string& word, const string& line) {
-	istringstream iss(line);
+	istringstream iss(line); // L - length of line
 	int count = 0;
 	while (!iss.eof()) {
 		string tmp; iss >> tmp;
@@ -34,8 +34,8 @@ int CountOccurancies(const string& word, const string& line) {
 
 Stats ExploreLine(const set<string>& key_words, const string& line) {
 	Stats result;
-	for (const auto& key_word : key_words) {
-		result.word_frequences[key_word] += CountOccurancies(key_word, line);
+	for (const auto& key_word : key_words) { // N - key words count
+		result.word_frequences[key_word] += CountOccurancies(key_word, line); // N*log(N)
 		if (result.word_frequences[key_word] == 0) { result.word_frequences.erase(key_word); }
 	}
 
