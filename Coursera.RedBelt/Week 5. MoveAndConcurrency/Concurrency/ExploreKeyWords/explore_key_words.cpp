@@ -20,9 +20,10 @@ struct Stats {
   }
 };
 
+int CountOccurancies(const string& word, const string& line);
+
 vector<string> Split(const string& line) {
 	istringstream iss(line); // L - length of line
-
 	return { istream_iterator<string>(iss),  istream_iterator<string>() };
 }
 
@@ -32,10 +33,8 @@ Stats ExploreLine(const set<string>& key_words, const string& line) {
 		result.word_frequences[key_word] += CountOccurancies(key_word, line); // N*log(N)
 			++result.word_frequences[word];
 		}
-	}
-
 	return result;
-}
+	}
 
 Stats ExploreKeyWordsSingleThread(
   const set<string>& key_words, const vector<string>& input
