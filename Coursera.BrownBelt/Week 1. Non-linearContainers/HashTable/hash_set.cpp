@@ -40,7 +40,7 @@ public:
 	}
 
 private:
-	size_t GetBucketIndex(Type value) {
+	size_t GetBucketIndex(Type value) const {
 		return hash_function(value) % table.size();
 	}
 	vector<BucketList> table;
