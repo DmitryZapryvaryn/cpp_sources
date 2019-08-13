@@ -15,6 +15,32 @@ struct Record {
 	int karma;
 };
 
+template<typename Key, typename Value>
+class SecondaryIndex {
+public:
+	void Erase(const Key& key, const Value& id) {
+
+		auto lo_hi = index.equal_range(key);
+
+		for (auto it = lo_hi.first; it != lo_hi.second; ++it) {
+			if (it->second == id) {
+				index.erase(it);
+				break;
+			}
+		}
+	}
+	void Insert(const Key& new_key, const Value& new_value) {
+		index.insert({ new_key, new_value });
+	}
+
+	const auto& GetIndex() const {
+		return index;
+	}
+
+private:
+	multimap<Key, Value> index;
+};
+
 class Database {
 public:
 	bool Put(const Record& record) {
@@ -22,9 +48,9 @@ public:
 
 			db.insert({ record.id, record });
 
-			user_index.insert({record.user, record.id});
-			timestamp_index.insert({ record.timestamp, record.id });
-			karma_index.insert({ record.karma, record.id });
+			user_index.Insert(record.user, record.id);
+			timestamp_index.Insert(record.timestamp, record.id);
+			karma_index.Insert(record.karma, record.id);
 
 			return true;
 		}
@@ -40,33 +66,9 @@ public:
 
 	bool Erase(const string& id) {
 		if (auto it = db.find(id); it != db.end()) {
-
-			// TODO: refactor, code duplication
-			auto lo_hi1 = user_index.equal_range(it->second.user);
-			for (auto it = lo_hi1.first; it != lo_hi1.second; ++it) {
-				if (it->second == id) {
-					user_index.erase(it);
-					break;
-				}
-			}
-
-			// TODO: refactor, code duplication
-			auto lo_hi2 = timestamp_index.equal_range(it->second.timestamp);
-			for (auto it = lo_hi2.first; it != lo_hi2.second; ++it) {
-				if (it->second == id) {
-					timestamp_index.erase(it);
-					break;
-				}
-			}
-
-			// TODO: refactor, code duplication
-			auto lo_hi3 = karma_index.equal_range(it->second.karma);
-			for (auto it = lo_hi3.first; it != lo_hi3.second; ++it) {
-				if (it->second == id) {
-					karma_index.erase(it);
-					break;
-				}
-			}
+			user_index.Erase(it->second.user, id);
+			timestamp_index.Erase(it->second.timestamp, id);
+			karma_index.Erase(it->second.karma, id);
 
 			db.erase(id);
 
@@ -76,11 +78,10 @@ public:
 		return false;
 	}
 
-	// TODO: refactor, code duplication
 	template <typename Callback>
 	void RangeByTimestamp(int low, int high, Callback callback) const {
-		for (auto it = timestamp_index.lower_bound(low);
-			it != timestamp_index.upper_bound(high);
+		for (auto it = timestamp_index.GetIndex().lower_bound(low);
+			it != timestamp_index.GetIndex().upper_bound(high);
 			++it) {
 
 			if (auto i = db.find(it->second); i == db.end() || !callback(i->second)) {
@@ -89,11 +90,10 @@ public:
 		}
 	}
 
-	// TODO: refactor, code duplication
 	template <typename Callback>
 	void RangeByKarma(int low, int high, Callback callback) const {
-		for (auto it = karma_index.lower_bound(low);
-			it != karma_index.upper_bound(high);
+		for (auto it = karma_index.GetIndex().lower_bound(low);
+			it != karma_index.GetIndex().upper_bound(high);
 			++it) {
 		
 			if (auto i = db.find(it->second); i == db.end() || !callback(i->second)) {
@@ -102,10 +102,9 @@ public:
 		}
 	}
 
-	// TODO: refactor, code duplication
 	template <typename Callback>
 	void AllByUser(const string& user, Callback callback) const {
-		auto lo_hi = user_index.equal_range(user);
+		auto lo_hi = user_index.GetIndex().equal_range(user);
 		for (auto it = lo_hi.first;
 			it != lo_hi.second;
 			++it) {
@@ -118,9 +117,9 @@ public:
 
 private:
 	unordered_map<string, Record> db;
-	multimap<string, string> user_index;
-	multimap<int, string> timestamp_index;
-	multimap<int, string> karma_index;
+	SecondaryIndex<string, string> user_index;
+	SecondaryIndex<int, string> timestamp_index;
+	SecondaryIndex<int, string> karma_index;
 
 
 };
