@@ -36,7 +36,7 @@ public:
 	}
 
 	const BucketList& GetBucket(const Type& value) const {
-		return table[GetBucketIndex(value)];
+		return table.at(GetBucketIndex(value));
 	}
 
 private:
