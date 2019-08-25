@@ -4,7 +4,8 @@
 #include "test_runner.h"
 
 #include <vector>
-#include <memory>
+#include <memory>															
+
 
 using namespace std;
 
@@ -86,80 +87,70 @@ bool Collide(const GameObject& first, const GameObject& second) {
 	return first.Collide(second);
 }
 
-geo2d::Point Unit::getPosition() const
-{
-	return position_;
-}
+geo2d::Point Unit::getPosition() const { return position_; }
+geo2d::Rectangle Building::getGeometry() const { return geometry_; }
+geo2d::Circle Tower::getGeometry() const { return geometry_; }
+geo2d::Segment Fence::getGeometry() const { return geometry_; }
 
 bool Unit::CollideWith(const Unit& that) const {
 	return geo2d::Collide(position_, that.getPosition());
 }
-
 bool Unit::CollideWith(const Building& that) const {
 	return geo2d::Collide(position_, that.getGeometry());
 }
-
 bool Unit::CollideWith(const Tower& that) const {
 	return geo2d::Collide(position_, that.getGeometry());
 }
-
 bool Unit::CollideWith(const Fence& that) const {
 	return geo2d::Collide(position_, that.getGeometry());
 }
 
-geo2d::Rectangle Building::getGeometry() const { return geometry_; }
+
 
 bool Building::CollideWith(const Unit& that) const {
 	return geo2d::Collide(geometry_, that.getPosition());
 }
-
 bool Building::CollideWith(const Building& that) const {
 	return geo2d::Collide(geometry_, that.getGeometry());
 }
-
 bool Building::CollideWith(const Tower& that) const {
 	return geo2d::Collide(geometry_, that.getGeometry());
 }
-
 bool Building::CollideWith(const Fence& that) const {
 	return geo2d::Collide(geometry_, that.getGeometry());
 }
 
-geo2d::Circle Tower::getGeometry() const { return geometry_; }
+
 
 bool Tower::CollideWith(const Unit& that) const {
 	return geo2d::Collide(geometry_, that.getPosition());
 }
-
 bool Tower::CollideWith(const Building& that) const {
 	return geo2d::Collide(geometry_, that.getGeometry());
 }
-
 bool Tower::CollideWith(const Tower& that) const {
 	return geo2d::Collide(geometry_, that.getGeometry());
 }
-
 bool Tower::CollideWith(const Fence& that) const {
 	return geo2d::Collide(geometry_, that.getGeometry());
 }
 
-geo2d::Segment Fence::getGeometry() const { return geometry_; }
+
+
 
 bool Fence::CollideWith(const Unit& that) const {
 	return geo2d::Collide(geometry_, that.getPosition());
 }
-
 bool Fence::CollideWith(const Building& that) const {
 	return geo2d::Collide(geometry_, that.getGeometry());
 }
-
 bool Fence::CollideWith(const Tower& that) const {
 	return geo2d::Collide(geometry_, that.getGeometry());
 }
-
 bool Fence::CollideWith(const Fence& that) const {
 	return geo2d::Collide(geometry_, that.getGeometry());
 }
+
 
 void TestAddingNewObjectOnMap() {
 	// Юнит-тест моделирует ситуацию, когда на игровой карте уже есть какие-то объекты,
