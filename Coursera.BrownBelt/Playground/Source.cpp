@@ -1,64 +1,70 @@
 #include <iostream>
 #include <memory>
+#include <vector>
+#include <iterator>
+#include <algorithm>
+#include <numeric>
 
 
 using namespace std;
 
-class Child1;
-class Child2;
-
-struct Parent {
-	virtual ~Parent() = default;
-
-	virtual void foo(const Parent& that) const = 0;
-	virtual void fooWith(const Child1& that) const = 0;
-	virtual void fooWith(const Child2& that) const = 0;
-};
-
-struct Child1 : public Parent {
-	void foo(const Parent& that) const {
-		cout << "Child1::foo" << endl;
-		that.fooWith(*this);
-	};
-	void fooWith(const Child1& that) const {
-		cout << "Child1::fooWith(Child1)" << endl;
-	};
-	void fooWith(const Child2& that) const {
-		cout << "Child1::fooWith(Child2)" << endl;
-	};
-};
-
-struct Child2 : public Parent {
-	void foo(const Parent& that) const {
-		cout << "Child2::foo" << endl;
-		that.fooWith(*this);
-	};
-	void fooWith(const Child1& that) const {
-		cout << "Child2::fooWith(Child1)" << endl;
-	};
-	void fooWith(const Child2& that) const {
-		cout << "Child2::fooWith(Child2)" << endl;
-	};
-};
-
-void bar(const Parent& first, const Parent& second) {
-	second.foo(first);
+template<typename T>
+void printVector(const vector<T> vec) {
+	bool first = true;
+	for (const auto value : vec) {
+		if (first) {
+			cout << value;
+			first = false;
+		}
+		else { cout << " " << value; }
+	}
 }
 
-int main() {
-	Parent* ch11 = &Child1();
-	Parent* ch21 = &Child2();
-	Parent* ch12 = &Child1();
-	Parent* ch22 = &Child2();
+struct Test {
+	int num;
+	bool b;
 
-	cout << "Child 1 - Child 1: " << endl;
-	bar(*ch11, *ch12);
-	cout << "Child 1 - Child 2: " << endl;
-	bar(*ch11, *ch21);
-	cout << "Child 2 - Child 1: " << endl;
-	bar(*ch21, *ch11);
-	cout << "Child 2 - Child 2: " << endl;
-	bar(*ch21, *ch22);
+	friend istream& operator>> (istream& in, Test& t) {
+		char b;
+
+		in >> t.num >> b;
+		
+		t.b = b == 't';
+
+		return in;
+	}
+
+	friend ostream& operator<< (ostream& out, const Test& t) {
+		return out << t.num << ' ' << std::boolalpha << t.b;
+	}
+};
+
+int main() {
+	
+	Test t;
+	cin >> t;
+	cout << t;
+	
+	/*vector<Test> numbers = { {1, true}, {2, false}, {3, false}, {4, true}, {5, false}, {6, true} };
+
+	vector<Test> v1;
+	vector<Test> v2;
+
+	partition_copy(
+		begin(numbers),
+		end(numbers),
+		back_inserter(v1),
+		back_inserter(v2),
+		[](const Test& n) {
+			return n.b;
+		});
+
+	cout << "v1:\n";
+	printVector(v1);
+	cout << "\n";
+	cout << "v2:\n";
+	printVector(v2);
+	cout << "\n";*/
 
 	return 0;
 }
