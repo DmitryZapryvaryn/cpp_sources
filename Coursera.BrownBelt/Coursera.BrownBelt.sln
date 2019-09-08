@@ -39,6 +39,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Synchronized2", "Week 3. Co
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConcurrentMap2", "Week 3. ConstAndUnique_ptr\ConcurrentMap2\ConcurrentMap2.vcxproj", "{ED935A14-E09E-464B-823F-AC8F0E5E1F92}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Polynomial", "Week 3. ConstAndUnique_ptr\Polynomial\Polynomial.vcxproj", "{8B2DDF75-0F2B-4FD7-8B58-8CE605CD5AD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -167,6 +169,14 @@ Global
 		{ED935A14-E09E-464B-823F-AC8F0E5E1F92}.Release|x64.Build.0 = Release|x64
 		{ED935A14-E09E-464B-823F-AC8F0E5E1F92}.Release|x86.ActiveCfg = Release|Win32
 		{ED935A14-E09E-464B-823F-AC8F0E5E1F92}.Release|x86.Build.0 = Release|Win32
+		{8B2DDF75-0F2B-4FD7-8B58-8CE605CD5AD8}.Debug|x64.ActiveCfg = Debug|x64
+		{8B2DDF75-0F2B-4FD7-8B58-8CE605CD5AD8}.Debug|x64.Build.0 = Debug|x64
+		{8B2DDF75-0F2B-4FD7-8B58-8CE605CD5AD8}.Debug|x86.ActiveCfg = Debug|Win32
+		{8B2DDF75-0F2B-4FD7-8B58-8CE605CD5AD8}.Debug|x86.Build.0 = Debug|Win32
+		{8B2DDF75-0F2B-4FD7-8B58-8CE605CD5AD8}.Release|x64.ActiveCfg = Release|x64
+		{8B2DDF75-0F2B-4FD7-8B58-8CE605CD5AD8}.Release|x64.Build.0 = Release|x64
+		{8B2DDF75-0F2B-4FD7-8B58-8CE605CD5AD8}.Release|x86.ActiveCfg = Release|Win32
+		{8B2DDF75-0F2B-4FD7-8B58-8CE605CD5AD8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,6 +196,7 @@ Global
 		{51935801-0346-4EC1-B7F0-B1A0405FFBE6} = {8E2F9DCE-D8D3-4AB7-9EBC-AD2C52BA5707}
 		{F03664DF-AA17-4B0B-9CBB-AD08B60C86AA} = {8E2F9DCE-D8D3-4AB7-9EBC-AD2C52BA5707}
 		{ED935A14-E09E-464B-823F-AC8F0E5E1F92} = {8E2F9DCE-D8D3-4AB7-9EBC-AD2C52BA5707}
+		{8B2DDF75-0F2B-4FD7-8B58-8CE605CD5AD8} = {8E2F9DCE-D8D3-4AB7-9EBC-AD2C52BA5707}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {42B2B0FC-B875-4232-B88F-30275B8F46D5}
