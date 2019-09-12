@@ -43,18 +43,40 @@ private:
 		}
 	}
 
-	struct AccessProxy {
-		T value;
-		size_t degree;
+	class AccessProxy {
+	public:
+		AccessProxy(Polynomial& poly, size_t degree) : poly_(poly), degree_(degree) {}
 
-		Polynomial& operator=(T value) {
-			if (degree > coeffs_.size() - 1) {
-				coeffs_.resize(degree + 1, 0);
+		void operator=(const T value) {
+			// it's not necessary to assign coeff to zero
+			if (value == 0) {
+				return;
 			}
 
-			coeffs_[degree] = value;
-			return coeffs_[degree];
+			auto& coeff = poly_.coeffs_;
+			if (degree_ > coeff.size() - 1) {
+				coeff.resize(degree_ + 1, 0);
+			}
+
+			coeff[degree_] = value;
+			/*return coeff[degree_];*/
 		}
+
+		bool operator==(const T lhs) const {
+			return std::as_const(poly_)[degree_] == lhs;
+		}
+		
+		ostream& operator<<(ostream& out) const {
+			return out << std::as_const(poly_)[degree_];
+		}
+
+		operator T() const {
+			return std::as_const(poly_)[degree_];
+		}
+
+	private:
+		Polynomial& poly_;
+		size_t degree_;
 	};
 
 public:
@@ -108,9 +130,7 @@ public:
 
 	// Реализуйте неконстантную версию operator[]
 	AccessProxy operator [](size_t degree) {
-
-		//return coeffs_[degree];
-		return degree < coeffs_.size() ? AccessProxy(coeffs_[degree], degree) : AccessProxy(0, degree);
+		return AccessProxy(*this, degree);
 	}
 
 
