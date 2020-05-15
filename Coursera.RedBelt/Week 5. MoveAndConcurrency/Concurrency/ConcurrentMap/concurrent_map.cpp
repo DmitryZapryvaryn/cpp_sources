@@ -16,7 +16,6 @@ public:
   static_assert(is_integral_v<K>, "ConcurrentMap supports only integer keys");
 
   struct Access {
-	  // важно первым полем ставить lock_guard - блокировка произойдёт раньше чем доступ к последующим полям 
 	  lock_guard<mutex> g;
 	  V& ref_to_value;
   };
